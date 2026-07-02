@@ -1,4 +1,7 @@
 package com.abinet.safetydetector;
 
-public class RiskLevel {
+public enum RiskLevel {
+    SAFE,
+    SUSPICIOUS,
+    HARMFUL
 }
