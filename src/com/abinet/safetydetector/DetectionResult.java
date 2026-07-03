@@ -6,6 +6,7 @@ public class DetectionResult {
     private String matchedKeyword;
     private String reason;
 
+
     public DetectionResult(String message, RiskLevel riskLevel, String matchedKeyword, String reason) {
         this.message = message;
         this.riskLevel = riskLevel;
@@ -27,4 +28,5 @@ public class DetectionResult {
     public String getReason() {
         return reason;
     }
+
 }
