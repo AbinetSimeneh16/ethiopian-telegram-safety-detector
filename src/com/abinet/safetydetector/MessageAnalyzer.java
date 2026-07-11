@@ -23,6 +23,21 @@ public class MessageAnalyzer {
                 );
             }
         }
+        // 2. Harmful pattern matching
+        if (containsAllWords(lowerCaseMessage, "private", "video") ||
+                containsAllWords(lowerCaseMessage, "private", "photo") ||
+                containsAllWords(lowerCaseMessage, "leak", "video") ||
+                containsAllWords(lowerCaseMessage, "leak", "photo") ||
+                containsAllWords(lowerCaseMessage, "post", "video") ||
+                containsAllWords(lowerCaseMessage, "post", "photo")) {
+
+            return new DetectionResult(
+                    message,
+                    RiskLevel.HARMFUL,
+                    "pattern match",
+                    "Possible blackmail, privacy violation, or exploitative content detected."
+            );
+        }
 
         // Check scam keywords
         List<String> scamKeywords = keywordRepository.getScamKeywords();
@@ -36,6 +51,22 @@ public class MessageAnalyzer {
                 );
             }
         }
+
+        // 4. Scam pattern matching
+        if (containsAllWords(lowerCaseMessage, "send", "money") ||
+                containsAllWords(lowerCaseMessage, "pay", "now") ||
+                containsAllWords(lowerCaseMessage, "click", "link") ||
+                containsAllWords(lowerCaseMessage, "bank", "transfer") ||
+                containsAllWords(lowerCaseMessage, "account", "blocked")) {
+
+            return new DetectionResult(
+                    message,
+                    RiskLevel.SUSPICIOUS,
+                    "pattern match",
+                    "Possible scam, phishing, or financial fraud content detected."
+            );
+        }
+
         // Check harassment keywords
         List<String> harassmentKeywords = keywordRepository.getHarassmentKeywords();
         for (String keyword : harassmentKeywords) {
@@ -48,6 +79,19 @@ public class MessageAnalyzer {
                 );
             }
         }
+
+        // 6. Harassment pattern matching
+        if (containsAllWords(lowerCaseMessage, "ruin", "life") ||
+                containsAllWords(lowerCaseMessage, "regret", "this") ||
+                containsAllWords(lowerCaseMessage, "expose", "you")) {
+
+            return new DetectionResult(
+                    message,
+                    RiskLevel.SUSPICIOUS,
+                    "pattern match",
+                    "Possible harassment, intimidation, or threatening language detected."
+            );
+        }
         // If nothing matched
         return new DetectionResult(
                 message,
@@ -55,6 +99,9 @@ public class MessageAnalyzer {
                 "None",
                 "No harmful content detected."
         );
+    }
+    private boolean containsAllWords(String message, String word1, String word2) {
+        return message.contains(word1) && message.contains(word2);
     }
 
 
