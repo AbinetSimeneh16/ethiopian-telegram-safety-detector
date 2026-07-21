@@ -1,0 +1,6 @@
+private,video
+private,photo
+leak,video
+leak,photo
+post,video
+post,photo

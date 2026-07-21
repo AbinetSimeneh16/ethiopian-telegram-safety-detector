@@ -7,18 +7,23 @@ public class Main {
         MessageAnalyzer analyzer = new MessageAnalyzer();
 
         System.out.println("=== Ethiopian Telegram Safety Detector ===");
-        System.out.print("Enter a message to analyze: ");
+        String stop="c";
+        while (!stop.equals("s")) {
+            System.out.print("Enter a message to analyze: ");
 
-        String message = scanner.nextLine();
+            String message = scanner.nextLine();
 
-        DetectionResult result = analyzer.analyzeMessage(message);
+            DetectionResult result = analyzer.analyzeMessage(message);
 
-        System.out.println("\n=== Detection Result ===");
-        System.out.println("Original Message: " + result.getMessage());
-        System.out.println("Risk Level: " + result.getRiskLevel());
-        System.out.println("Matched Keyword: " + result.getMatchedKeyword());
-        System.out.println("Reason: " + result.getReason());
-
+            System.out.println("\n=== Detection Result ===");
+            System.out.println("Original Message: " + result.getMessage());
+            System.out.println("Risk Level: " + result.getRiskLevel());
+            System.out.println("Matched Keyword: " + result.getMatchedKeyword());
+            System.out.println("Reason: " + result.getReason());
+            System.out.println("Please enter the letter's' to stop the program and the letter'c' to continue:");
+            stop=scanner.nextLine().toLowerCase();
+        }
         scanner.close();
+
     }
 }

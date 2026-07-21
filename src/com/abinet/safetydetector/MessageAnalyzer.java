@@ -24,7 +24,7 @@ public class MessageAnalyzer {
             }
         }
         // 2. Harmful pattern matching
-        if (containsAllWords(lowerCaseMessage, "private", "video") ||
+        /*if (containsAllWords(lowerCaseMessage, "private", "video") ||
                 containsAllWords(lowerCaseMessage, "private", "photo") ||
                 containsAllWords(lowerCaseMessage, "leak", "video") ||
                 containsAllWords(lowerCaseMessage, "leak", "photo") ||
@@ -37,6 +37,20 @@ public class MessageAnalyzer {
                     "pattern match",
                     "Possible blackmail, privacy violation, or exploitative content detected."
             );
+        }*/
+        List<String> patterns1 = keywordRepository.getHarmfulPatterns();
+
+        for (String pattern : patterns1) {
+            String[] words = pattern.split(",");
+
+            if (containsAllWords(lowerCaseMessage, words[0], words[1])) {
+                return new DetectionResult(
+                        message,
+                        RiskLevel.HARMFUL,
+                        "pattern match",
+                        "possible blackmail, privacy violation, or exploitative content detected."
+                );
+            }
         }
 
         // Check scam keywords
@@ -53,7 +67,7 @@ public class MessageAnalyzer {
         }
 
         // 4. Scam pattern matching
-        if (containsAllWords(lowerCaseMessage, "send", "money") ||
+        /*if (containsAllWords(lowerCaseMessage, "send", "money") ||
                 containsAllWords(lowerCaseMessage, "pay", "now") ||
                 containsAllWords(lowerCaseMessage, "click", "link") ||
                 containsAllWords(lowerCaseMessage, "bank", "transfer") ||
@@ -65,7 +79,23 @@ public class MessageAnalyzer {
                     "pattern match",
                     "Possible scam, phishing, or financial fraud content detected."
             );
+        }*/
+        List<String> patterns2 = keywordRepository.getScamPatterns();
+        for (String pattern : patterns2) {
+            String[] words = pattern.split(",");
+
+            if (containsAllWords(lowerCaseMessage, words[0], words[1])) {
+                return new DetectionResult(
+                        message,
+                        RiskLevel.SUSPICIOUS,
+                        "pattern match",
+                        "Possible scam, phishing, or financial fraud content detected."
+                );
+            }
         }
+
+
+
 
         // Check harassment keywords
         List<String> harassmentKeywords = keywordRepository.getHarassmentKeywords();
@@ -81,7 +111,7 @@ public class MessageAnalyzer {
         }
 
         // 6. Harassment pattern matching
-        if (containsAllWords(lowerCaseMessage, "ruin", "life") ||
+       /* if (containsAllWords(lowerCaseMessage, "ruin", "life") ||
                 containsAllWords(lowerCaseMessage, "regret", "this") ||
                 containsAllWords(lowerCaseMessage, "expose", "you")) {
 
@@ -91,7 +121,21 @@ public class MessageAnalyzer {
                     "pattern match",
                     "Possible harassment, intimidation, or threatening language detected."
             );
+        }*/
+        List<String> patterns3 = keywordRepository.getHarassmentPatterns();
+        for (String pattern : patterns3) {
+            String[] words = pattern.split(",");
+
+            if (containsAllWords(lowerCaseMessage, words[0], words[1])) {
+                return new DetectionResult(
+                        message,
+                        RiskLevel.SUSPICIOUS,
+                        "pattern match",
+                        "Possible harassment, intimidation, or threatening language detected."
+                );
+            }
         }
+
         // If nothing matched
         return new DetectionResult(
                 message,
