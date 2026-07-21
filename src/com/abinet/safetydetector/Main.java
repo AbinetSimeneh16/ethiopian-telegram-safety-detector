@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MessageAnalyzer analyzer = new MessageAnalyzer();
-
+        DetectionLogger logger = new DetectionLogger();
         System.out.println("=== Ethiopian Telegram Safety Detector ===");
         String stop="c";
         while (!stop.equals("s")) {
@@ -20,6 +20,9 @@ public class Main {
             System.out.println("Risk Level: " + result.getRiskLevel());
             System.out.println("Matched Keyword: " + result.getMatchedKeyword());
             System.out.println("Reason: " + result.getReason());
+
+            logger.log(result);
+
             System.out.println("Please enter the letter's' to stop the program and the letter'c' to continue:");
             stop=scanner.nextLine().toLowerCase();
         }

@@ -3,9 +3,11 @@ import java.util.List;
 
 public class MessageAnalyzer {
     private KeywordRepository keywordRepository;
+    private DetectionLogger DetectionLogger;
 
     public MessageAnalyzer() {
         this.keywordRepository = new KeywordRepository();
+        this.DetectionLogger=new DetectionLogger();
     }
 
     public DetectionResult analyzeMessage(String message) {
@@ -15,6 +17,7 @@ public class MessageAnalyzer {
         List<String> harmfulKeywords = keywordRepository.getHarmfulKeywords();
         for (String keyword : harmfulKeywords) {
             if (lowerCaseMessage.contains(keyword.toLowerCase())) {
+
                 return new DetectionResult(
                         message,
                         RiskLevel.HARMFUL,

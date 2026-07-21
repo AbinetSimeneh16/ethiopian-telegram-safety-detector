@@ -1,0 +1,30 @@
+====================================
+Date: 2026-07-21 23:19:48
+
+Message:
+private video
+
+Risk Level:
+HARMFUL
+
+Matched Keyword:
+private video
+
+Reason:
+Possible harmful or exploitative content detected.
+====================================
+====================================
+Date: 2026-07-21 23:20:31
+
+Message:
+leak video
+
+Risk Level:
+HARMFUL
+
+Matched Keyword:
+pattern match
+
+Reason:
+possible blackmail, privacy violation, or exploitative content detected.
+====================================

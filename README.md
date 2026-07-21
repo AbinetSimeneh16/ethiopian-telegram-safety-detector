@@ -16,7 +16,7 @@ This project is being developed as a learning project in Java and will continue 
 - Reads keywords and patterns from external text files
 - Interactive console interface
 - Continues analyzing messages until the user exits
-
+- Logs flagged detections with timestamps
 ## Technologies Used
 
 - Java
@@ -29,13 +29,44 @@ This project is being developed as a learning project in Java and will continue 
 
 ```
 src/
-├── Main.java
-├── MessageAnalyzer.java
-├── DetectionResult.java
-├── KeywordRepository.java
-├── KeywordFileHandler.java
-└── RiskLevel.java
+└── com/
+    └── abinet/
+        └── safetydetector/
+            ├── Main.java
+            ├── MessageAnalyzer.java
+            ├── DetectionResult.java
+            ├── DetectionLogger.java
+            ├── KeywordRepository.java
+            ├── KeywordFileHandler.java
+            └── RiskLevel.java
 ```
+Project Root
+├── src/
+│   └── ...
+├── harmfulkeywords.txt
+├── harmfulpatterns.txt
+├── scamkeywords.txt
+├── harassmentkeywords.txt
+├── detections.txt
+└── README.md
+## Current Status
+
+Version 1.2
+
+### Completed
+- Keyword detection
+- Pattern detection
+- External keyword files
+- Detection logging
+- Interactive console application
+
+### Planned
+- Keyword management menu
+- Statistics dashboard
+- JavaFX GUI
+- PostgreSQL integration
+- Telegram Bot API
+- AI-powered message classification
 
 ## Future Improvements
 

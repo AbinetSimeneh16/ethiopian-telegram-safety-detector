@@ -15,7 +15,6 @@ public class KeywordFileHandler {
         try(BufferedWriter bw=new BufferedWriter(new FileWriter(file,true)))
         {
             bw.write(line);
-            bw.newLine();
         }
         catch (IOException e)
         {
