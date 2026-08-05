@@ -28,3 +28,34 @@ pattern match
 Reason:
 possible blackmail, privacy violation, or exploitative content detected.
 ====================================
+====================================
+Date: 2026-08-03 08:24:23
+
+Message:
+send me your private video
+
+Risk Level:
+HARMFUL
+
+Matched Keyword:
+private video
+
+Reason:
+Possible harmful or exploitative content detected.
+====================================
+====================================
+Date: 2026-08-05 11:12:51
+
+Message:
+send me money
+
+Risk Level:
+SUSPICIOUS
+
+Matched Keyword:
+send me money
+
+Reason:
+Possible scam or financial fraud content detected.
+====================================
+

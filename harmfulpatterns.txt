@@ -3,4 +3,4 @@ private,photo
 leak,video
 leak,photo
 post,video
-post,photo
+post,photokill,you
