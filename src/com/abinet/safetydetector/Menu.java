@@ -16,7 +16,8 @@ public class Menu {
             System.out.println("1.analyze Message");
             System.out.println("2. Manage Keywords");
             System.out.println("3. View Keywords");
-            System.out.println("4. Exit");
+            System.out.println("4. Statistics");
+            System.out.println("5. Exit");
             System.out.println("please enter your choice from 1 to 4 in number");
             choice=scanner.nextInt();
             scanner.nextLine();
@@ -206,7 +207,7 @@ public class Menu {
 
 
             }
-            else if(choice==4)
+            else if(choice==5)
             {
                 stop="s";
             }
